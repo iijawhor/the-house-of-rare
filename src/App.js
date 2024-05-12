@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import { data } from "./exports";
+import { Header, Footer, Banner } from "./exports";
+import { Outlet } from "react-router-dom";
 function App() {
+  //productData------------------------
+  // additionalImageUrls-availableSizes-brandName
+  // -category-description-gender-imageUrl-isInStock-
+  // name-price-productCode-productionDate-rating
+  //reviews-totalReviewCount
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="box-border m-0 p-0 bg-black h-screen text-white">
+      <Header />
+      <div className="pt-20">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   );
 }
-
 export default App;
