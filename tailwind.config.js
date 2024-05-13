@@ -13,6 +13,10 @@ module.exports = {
         abel: ["IBM Plex Sans", "sans-serif"],
         alata: ["Alata", "sans-serif"],
         jost: ["Jost", "sans-serif"]
+      },
+      backgroundImage: {
+        "hero-pattern": "url()",
+        "footer-texture": "url()"
       }
     }
   },

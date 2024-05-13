@@ -8205,5 +8205,31 @@ export const data = {
       ],
       id: 9
     }
+  ],
+  bannerData: [
+    {
+      name: "shirt",
+      imageUrl:
+        "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg",
+      id: 1
+    },
+    {
+      name: "Jeans",
+      imageUrl:
+        "https://t3.ftcdn.net/jpg/02/47/19/44/360_F_247194478_7Fh3B00f4jG8inv4dGhDbHKwamHvLkoJ.jpg",
+      id: 2
+    },
+    {
+      name: "Blazers",
+      imageUrl:
+        "https://t3.ftcdn.net/jpg/04/94/07/16/360_F_494071670_jg6ve9uEDQ8Rhewjip8tNYULd48MUiX3.jpg",
+      id: 3
+    },
+    {
+      name: "T-Shirts",
+      imageUrl:
+        "https://i.pinimg.com/736x/69/9e/47/699e4783679e2b63c4fdc7f4504b812a.jpg",
+      id: 4
+    }
   ]
 };

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 function Products() {
   const location = useLocation();
-  const data = location.state.allProducts;
+  const data = (state) => state.location.allProducts;
 
   return (
     <div>

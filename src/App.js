@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="box-border m-0 p-0 bg-black text-white h-auto">
       <Header />
-      <div className="pt-20">
+      <div className="pt-16">
         <Outlet />
       </div>
       <Footer />

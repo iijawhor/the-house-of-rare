@@ -136,7 +136,10 @@ function Header() {
           <span className="h-0.5 w-7 bg-white rounded"></span>
         </div>
         <div>
-          <h1 className="uppercase md:text-xl font-medium font-jost font-bold tracking-widest">
+          <h1
+            onClick={() => handleNavigate("/")}
+            className="uppercase md:text-xl cursor-pointer font-medium font-jost font-bold tracking-widest"
+          >
             The House Of Rare
           </h1>
         </div>
