@@ -118,7 +118,7 @@ function Header() {
     navigate(navigateTo);
   };
   return (
-    <section className="fixed z-40 w-full border-b-2 border-gray-900 h-16 flex justify-center text-white">
+    <section className=" bg-black fixed z-40 w-full border-b-2 border-gray-900 h-16 flex justify-center text-white">
       {toggleMenu && (
         <Menu
           toggleMenu={toggleMenu}
