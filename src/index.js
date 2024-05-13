@@ -6,12 +6,16 @@ import { store } from "./features/store";
 import { Provider } from "react-redux";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import { Banner } from "./exports";
+import { Home, Products } from "./exports";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <App />,
+    children: [
+      { path: "", element: <Home /> },
+      { path: "products", element: <Products /> }
+    ]
   }
 ]);
 root.render(
