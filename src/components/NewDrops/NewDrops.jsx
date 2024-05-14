@@ -25,7 +25,7 @@ function NewDrops() {
           {newDrops.map((product) => (
             <div className="h-4/6 md:h-full">
               <Card
-                productImage={`https://${product.imageUrl}`}
+                productImage={product.imageUrl}
                 productName={product.name}
                 productSize={product.availableSizes}
                 productPrice={product.price.current.text}

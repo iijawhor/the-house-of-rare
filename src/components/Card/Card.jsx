@@ -7,24 +7,24 @@ function Card({
   productCategory,
   productImage
 }) {
-  const defaultImage =
-    "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1516257984-b1b4d707412e";
   return (
-    <div className="w-full h-full relative flex flex-col gap-3">
+    <div className="w-auto h-full relative flex flex-col gap-1 md:gap-3">
       <img
-        src={productImage || defaultImage}
+        src={`https://${productImage}`}
         alt=""
         srcset=""
-        className="max-h- min-h-60 md:h-full w-full"
+        className=" min-h-28 md:h-full w-full"
       />
       <div className="relative flex flex-col gap-1">
-        <p className="font-jost text-wrap uppercase text-xs tracking-widest font-extralight text-white">
+        <p className="md:block hidden font-jost text-wrap uppercase text-xs tracking-widest font-extralight text-white">
           {productName}
         </p>
-        <p className="font-jost tracking-wide font-light">{productPrice}</p>
+        <p className="font-jost text-xs tracking-wide font-light">
+          {productPrice}
+        </p>
         <div className="flex items-center gap-2 flex-wrap">
           {productSize.map((size) => (
-            <span className="font-jost tracking-wide font-light uppercase text-sm">
+            <span className="md:block text-xs hidden font-jost tracking-wide font-light uppercase">
               {size}
             </span>
           ))}
