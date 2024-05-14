@@ -118,7 +118,7 @@ function Header() {
     navigate(navigateTo);
   };
   return (
-    <section className=" bg-black fixed z-40 w-full border-b-2 border-gray-900 h-16 flex justify-center text-white">
+    <section className=" bg-white fixed z-40 w-full border-b border-slate h-16 flex justify-center text-black">
       {toggleMenu && (
         <Menu
           toggleMenu={toggleMenu}
@@ -131,9 +131,9 @@ function Header() {
           className="cursor-pointer flex flex-col gap-1"
           onClick={() => setToggleMenu(!toggleMenu)}
         >
-          <span className="h-0.5 w-7 bg-white rounded"></span>
-          <span className="h-0.5 w-7 bg-white rounded"></span>
-          <span className="h-0.5 w-7 bg-white rounded"></span>
+          <span className="h-0.5 w-7 bg-black rounded"></span>
+          <span className="h-0.5 w-7 bg-black rounded"></span>
+          <span className="h-0.5 w-7 bg-black rounded"></span>
         </div>
         <div>
           <h1
@@ -156,7 +156,7 @@ function Header() {
                 {navLink.icon}
                 {navLink.id === 4 ? (
                   <p
-                    className={`absolute -top-1 -right-2 border rounded-full h-4 w-4 text-xs text-center font-semibold bg-white text-black `}
+                    className={`absolute -top-1 -right-2 border rounded-full h-4 w-4 text-xs text-center font-semibold bg-black text-white `}
                   >
                     {cartItems.length}
                   </p>
