@@ -11,8 +11,15 @@ function ProductDetails() {
   const dispatch = useDispatch();
   const sizeSelectMessage = () => toast("Select a size");
   const productDetails = location.state.productDetails;
-  let { additionalImageUrls, imageUrl, name, price, availableSizes, reviews } =
-    productDetails;
+  let {
+    additionalImageUrls,
+    imageUrl,
+    name,
+    price,
+    availableSizes,
+    reviews,
+    rating
+  } = productDetails;
   const [toggleReviews, setToggleReviews] = useState(false);
   const [selectedSize, setSelectedSize] = useState(false);
 
@@ -149,7 +156,7 @@ function ProductDetails() {
             </button>
           </div>
           {/* reviews*/}
-          <div className="reviews border border-slate-100 p-2 flex flex-col gap-1 h-fit max-h-72 overflow-y-scroll">
+          <div className="reviews border rounded border-slate-100 p-2 flex flex-col gap-1 h-fit max-h-72 overflow-y-scroll">
             <h1
               className="uppercase font-jost text-sm tracking-widest flex items-center gap-1 w-fit pr-3 mb-2 cursor-pointer"
               onClick={() => setToggleReviews(!toggleReviews)}
@@ -172,6 +179,7 @@ function ProductDetails() {
                 </svg>
               </span>
             </h1>
+
             {toggleReviews && (
               <div className="flex flex-col gap-4">
                 {reviews.map((productReview) => (
