@@ -11,15 +11,8 @@ function ProductDetails() {
   const dispatch = useDispatch();
   const sizeSelectMessage = () => toast("Select a size");
   const productDetails = location.state.productDetails;
-  let {
-    additionalImageUrls,
-    imageUrl,
-    name,
-    price,
-    availableSizes,
-    reviews,
-    rating
-  } = productDetails;
+  let { additionalImageUrls, imageUrl, name, price, availableSizes, reviews } =
+    productDetails;
   const [toggleReviews, setToggleReviews] = useState(false);
   const [selectedSize, setSelectedSize] = useState(false);
 
