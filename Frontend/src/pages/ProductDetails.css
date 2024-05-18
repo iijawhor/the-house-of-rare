@@ -1,0 +1,13 @@
+.reviews::-webkit-scrollbar {
+  width: 8px;
+}
+.reviews::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: black;
+}
+.reviews::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 20px;
+  cursor: -webkit-grabbing;
+}
