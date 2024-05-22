@@ -4,7 +4,9 @@ const addedToTheCart = () => toast("Product Added to Cart!");
 
 const errorMessage = () => toast("Product is already in your cart");
 const initialState = {
-  cartItems: []
+  cartItems: [],
+  amount: 0,
+  total: 0
 };
 
 export const cartSlice = createSlice({
@@ -23,9 +25,16 @@ export const cartSlice = createSlice({
       } else if (cartItem) {
         errorMessage();
       }
-    }
+    },
+    removeItem: (state, action) => {
+      const itemId = action.payload;
+      state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
+    },
+    updateCartAmounts: (state, action) => {},
+    calculateTotal: (state, action) => {}
   }
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeItem, updateCartAmounts, calculateTotal } =
+  cartSlice.actions;
 export default cartSlice.reducer;
