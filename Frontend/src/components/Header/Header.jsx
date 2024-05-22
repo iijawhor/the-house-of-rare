@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Menu } from "../../exports";
+import { Menu, Search, Products } from "../../exports";
 import { useSelector } from "react-redux";
 function Header() {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const navigate = useNavigate();
   const [toggleMenu, setToggleMenu] = useState(false);
   const [wishlist, setWishlist] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [toggleSearchbar, setToggleSearchbar] = useState(false);
   const headerItems = [
     {
       name: "account",
@@ -26,28 +28,6 @@ function Header() {
               strokeLinecap="round"
               strokeLinejoin="round"
               d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-            />
-          </svg>
-        </>
-      )
-    },
-    {
-      name: "Search",
-      id: 2,
-      icon: (
-        <>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="md:w-6 w-5 md:h-6 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
             />
           </svg>
         </>
@@ -92,9 +72,9 @@ function Header() {
       )
     },
     {
-      name: "Cart",
+      name: "bag",
       id: 4,
-      navigateTo: "/cart",
+      navigateTo: "/bag",
       icon: (
         <>
           <svg
@@ -124,10 +104,21 @@ function Header() {
         <Menu
           toggleMenu={toggleMenu}
           setToggleMenu={setToggleMenu}
+          toggleSearchbar={toggleSearchbar}
+          setToggleSearchbar={setToggleSearchbar}
           handleNavigate={handleNavigate}
         />
       )}
       <div className="flex items-center justify-between md:px-10 px-2 w-full">
+        {toggleSearchbar && (
+          <div className="absolute z-50 top-10 lg:top-3 lg:right-52">
+            <Search
+              toggleSearchbar={toggleSearchbar}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          </div>
+        )}
         <div
           className="cursor-pointer flex flex-col gap-1"
           onClick={() => setToggleMenu(!toggleMenu)}
@@ -146,6 +137,27 @@ function Header() {
         </div>
         <div>
           <div className="flex relative items-center gap-5">
+            <li
+              className="relative list-none md:block cursor-pointer"
+              onClick={() => setToggleSearchbar(!toggleSearchbar)}
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="md:w-6 w-5 md:h-6 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                  />
+                </svg>
+              </span>
+            </li>
             {headerItems.map((navLink) => (
               <li
                 key={navLink.id}
