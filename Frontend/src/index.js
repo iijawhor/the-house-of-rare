@@ -6,7 +6,7 @@ import { store } from "./features/store";
 import { Provider } from "react-redux";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import { Home, Products, ProductDetails } from "./exports";
+import { Home, Products, ProductDetails, Bag } from "./exports";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
   {
@@ -15,7 +15,8 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <Home /> },
       { path: "products", element: <Products /> },
-      { path: "product-details/:id", element: <ProductDetails /> }
+      { path: "product-details/:id", element: <ProductDetails /> },
+      { path: "bag", element: <Bag /> }
     ]
   }
 ]);
