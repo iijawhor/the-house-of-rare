@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Card,
@@ -6,12 +6,20 @@ import {
   CategoryFilter,
   PriceFilter,
   ColorFilter,
-  SizeFilter
+  SizeFilter,
+  Filter
 } from "../../exports";
+import { useDispatch, useSelector } from "react-redux";
+import { addProducts } from "../../features/productSlice";
 function Products() {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const allProducts = location.state.allProducts;
+  useEffect(() => {
+    dispatch(addProducts(data.products));
+  }, []);
+  const allProduct = useSelector((state) => state.products.products);
   const gridView = [
     {
       name: "gridTwo",
@@ -71,7 +79,6 @@ function Products() {
       ]
     }
   ];
-  const [filteredProducts, setFilteredProducts] = useState(allProducts);
 
   const [activeGrid, setActiveGrid] = useState(4);
   const handleGrid = (grid) => {
@@ -89,21 +96,22 @@ function Products() {
     const filterData = data.products.map((product) => {
       return product;
     });
-    setFilteredProducts(filterData);
+    // setFilteredProducts(filterData);
+    dispatch(addProducts(filterData));
   };
 
   const handleFilter = (category) => {
-    let products = allProducts;
+    let products = data.products;
     if (category) {
       let filteredItems = products.filter((product) => {
         return product.category === category;
       });
       products = filteredItems;
-      setFilteredProducts(products);
-    } else {
-      console.log("category not present", category);
+      // setFilteredProducts(products);
+      dispatch(addProducts(products));
     }
   };
+
   const handleNavigate = (id, product) => {
     navigate(`/product-details/:${id}`, { state: { productDetails: product } });
   };
@@ -112,10 +120,7 @@ function Products() {
     <section className="relative px-2 pb-10 pt-5">
       <div className="relative justify-between flex gap-8 m-auto w-10/12">
         <div className="w-1/4 flex flex-col gap-2">
-          <CategoryFilter handleChange={handleChange} />
-          <PriceFilter handleChange={handleChange} />
-          <ColorFilter handleChange={handleChange} />
-          <SizeFilter handleChange={handleChange} />
+          <Filter handleChange={handleChange} />
         </div>
         <div className="w-full flex flex-col gap-6 relative right-0">
           <div className="flex justify-between items-center">
@@ -166,7 +171,7 @@ function Products() {
               //     : ""
               // }`}
             >
-              {filteredProducts.map((product) => (
+              {allProduct.map((product) => (
                 <div
                   className="w-full md:h-auto cursor-pointer"
                   onClick={() => handleNavigate(product.id, product)}
