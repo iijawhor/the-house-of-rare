@@ -16,6 +16,7 @@ function Products() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const allProducts = location.state.allProducts;
+  const [toggleFilters, setToggleFilters] = useState(false);
   useEffect(() => {
     dispatch(addProducts(data.products));
   }, []);
@@ -117,13 +118,59 @@ function Products() {
   };
 
   return (
-    <section className="relative px-2 pb-10 pt-5">
-      <div className="relative justify-between flex gap-8 m-auto w-10/12">
-        <div className="w-1/4 flex flex-col gap-2">
-          <Filter handleChange={handleChange} />
+    <section className="relative  pb-10 ">
+      <div className="relative justify-between  flex gap-8 m-auto lg:w-10/12">
+        <div className="w-1/4 flex flex-col pt-20 gap-2 lg:block hidden px-2">
+          <Filter handleChange={handleChange} className="pt-20" />
         </div>
-        <div className="w-full flex flex-col gap-6 relative right-0">
-          <div className="flex justify-between items-center">
+
+        <div className="w-full flex flex-col lg:gap-6 gap-3 pt-20 pb-5 relative right-0">
+          {/* toggle filter */}
+          <div className="lg:hidden block px-2">
+            <div className="" onClick={() => setToggleFilters(!toggleFilters)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+                />
+              </svg>
+            </div>
+            {/* toggle filter */}
+            {toggleFilters && (
+              <div className="w-72 top-0 fixed bg-white z-50">
+                <span
+                  onClick={() => setToggleFilters(!toggleFilters)}
+                  className="absolute right-8 top-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18 18 6M6 6l12 12"
+                    />
+                  </svg>
+                </span>
+                <Filter handleChange={handleChange} className="pt-5" />
+              </div>
+            )}
+          </div>
+
+          <div className="flex justify-between items-center px-2">
             <div className="flex items-center gap-1 p-0.5">
               <p className="text-sm font-base text-black font-jost tracking-widest">
                 View As
@@ -153,12 +200,12 @@ function Products() {
             </div>
             <button
               onClick={handleButtonFilter}
-              className="text-black capitalize tracking-wide text-sm font-jost font-base border border-black py-2 w-40"
+              className="text-black capitalize tracking-wide md:text-sm font-jost font-base border border-black lg:py-1.5 lg:w-40 px-3 py-0.5"
             >
               Curated for you
             </button>
           </div>
-          <div className="relative flex items-center">
+          <div className="relative flex items-center px-2">
             <div
               className={`grid md:gap-6 md:gap-y-10 gap-1 items-center grid-cols-${activeGrid}`}
               // className={`grid gap-6 gap-y-10 items-center ${
