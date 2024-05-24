@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="box-border m-0 p-0 h-auto">
       <Header />
-      <div className="pt-16">
+      <div className="">
         <Outlet />
       </div>
       <Footer />
