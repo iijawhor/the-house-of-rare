@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 const addedToTheCart = () => toast("Product Added to Cart!");
-
+const removeFromCart = () => toast("Product removed from the cart!");
 const errorMessage = () => toast("Product is already in your cart");
 const initialState = {
   cartItems: [],
@@ -21,7 +21,7 @@ export const cartSlice = createSlice({
       );
       if (!cartItem) {
         state.cartItems.push(action.payload);
-        addedToTheCart();
+        toast.success("Product added to the cart!");
       } else if (cartItem) {
         errorMessage();
       }
@@ -29,6 +29,7 @@ export const cartSlice = createSlice({
     removeItem: (state, action) => {
       const itemId = action.payload;
       state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
+      toast.error("Product removed fron the cart!");
     },
     updateCartAmounts: (state, action) => {},
     calculateTotal: (state, action) => {}
